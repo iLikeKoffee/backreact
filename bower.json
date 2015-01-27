@@ -1,0 +1,15 @@
+{
+  "name": "realtors-project",
+  "version": "0.0.0",
+  "authors": [
+    "Sergey Golovin <golovim@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
