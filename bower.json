@@ -1,15 +1,28 @@
 {
-  "name": "realtors-project",
+  "name": "realtors",
   "version": "0.0.0",
-  "authors": [
-    "Sergey Golovin <golovim@gmail.com>"
-  ],
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ]
+  "dependencies": {
+    "angular": "~1.2.0",
+    "json3": "~3.3.1",
+    "es5-shim": "~3.1.0",
+    "bootstrap": "~3.2.0",
+    "angular-resource": "~1.2.0",
+    "angular-cookies": "~1.2.0",
+    "angular-sanitize": "~1.2.0",
+    "angular-animate": "~1.2.0",
+    "angular-touch": "~1.2.0",
+    "angular-route": "~1.2.0",
+    "react": "~0.12.0",
+    "alertify.js": "~0.3.11",
+    "node-uuid": "~1.4.2",
+    "validator-js": "~3.24.0",
+    "validator": "~0.0.5",
+    "chartjs": "~0.2.0",
+    "moment": "~2.8.4"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.0",
+    "angular-scenario": "~1.2.0"
+  },
+  "appPath": "app"
 }
