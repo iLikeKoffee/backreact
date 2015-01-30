@@ -23,16 +23,20 @@ module.exports = function(grunt) {
             server: {
                 options: {
                     open: false,
+                    livereload: true
                 }
             }
         },
         /* Watch task config */
         watch: {
+            options: {
+                livereload: true
+            },
             scripts: {
                 files: ['./scripts/controllers/src/**.jsx'],
                 tasks: ['react'],
                 options: {
-                    spawn: true
+                    spawn: true,
                 }
             }
         }
