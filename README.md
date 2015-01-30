@@ -1,5 +1,9 @@
 ### Проект внутренней системы управления базой данных агенства недвижимости "Центральное"
 
+#### Ссылки:
+
+- [Фото форм](https://www.dropbox.com/s/xb71et4xch4ewxr/realtors.zip?dl=0)
+
 Для установки утилит и зависимостей в среде *nix (Mac OS, Linux) нужно выполнить по очереди два скрипта **install-env.sh** и **install-deps.sh**
 
 Для Windows: **install-env.bat** и **install-deps.bat**
