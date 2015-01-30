@@ -25,14 +25,25 @@ module.exports = function(grunt) {
                     open: false,
                 }
             }
+        },
+        /* Watch task config */
+        watch: {
+            scripts: {
+                files: ['./scripts/controllers/src/**.jsx'],
+                tasks: ['react'],
+                options: {
+                    spawn: true
+                }
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-react');
 
-    grunt.registerTask('default', []);
-    grunt.registerTask('serve', ['connect::keepalive']);
+    grunt.registerTask('default', ['serve']);
+    grunt.registerTask('serve', ['connect:server','watch']);
 };
