@@ -31,20 +31,27 @@ module.exports = function(grunt) {
         /* LESS compiling */
         less: {
             development: {
-                files: [{
+                files: [
+                /* Compile components' less stylesheets */
+                {
                     expand: true, // Enable dynamic expansion.
                     cwd: './scripts/ui-components/src', // Src matches are relative to this path.
                     src: ['**/*.less'], // Actual pattern(s) to match.
                     dest: './scripts/ui-components/dest', // Destination path prefix.
                     ext: '.css', // Dest filepaths will have this extension.
-                }]
+                },
+                /* Compile main .less styleshhet */
+                {
+                    './styles/dest/main.css':'./styles/src/main.less'
+                }
+                ]
             }
         },
         /* Concatenate css files into one */
         concat_css: {
             all: {
-                src: ["./scripts/ui-components/dest/**/*.css"],
-                dest: "./css/dest/styles.css"
+                src: ['./styles/dest/main.css', './scripts/ui-components/dest/**/*.css'],
+                dest: "./styles/dest/styles.css"
             },
         },
         /* Running simple http server */
@@ -65,6 +72,7 @@ module.exports = function(grunt) {
             less: {
                 files: [
                     './scripts/ui-components/src/**/**.less',
+                    './styles/src/main.less'
                 ],
                 tasks: ['less:development','concat_css']
             },
