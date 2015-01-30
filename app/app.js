@@ -1,7 +1,7 @@
 requirejs.config({
-  baseUrl: 'bower_components',
+  baseUrl: 'app/',
   paths: {
-    app: '../app',
+    app: '../app/scripts',
     controllers: '../app/scripts/controllers/dest',
     ui: '../app/scripts/ui-components/dest',
     underscore: '../app/bower_components/underscore/underscore',

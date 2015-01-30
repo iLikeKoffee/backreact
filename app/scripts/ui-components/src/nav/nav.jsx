@@ -5,3 +5,4 @@ define(['react'], function(React) {
     	}
     });
 })
+
