@@ -12,17 +12,17 @@ module.exports = function(grunt) {
                     /* Controllers compiling. */
                     {
                         expand: true,
-                        cwd: './scripts/controllers/src',
+                        cwd: './app/scripts/controllers/src',
                         src: ['**/*.jsx'],
-                        dest: './scripts/controllers/dest',
+                        dest: './app/scripts/controllers/dest',
                         ext: '.js'
                     },
                     /* ui-components compiling */
                     {
                         expand: true,
-                        cwd: './scripts/ui-components/src',
+                        cwd: './app/scripts/ui-components/src',
                         src: ['**/**.jsx'],
-                        dest: './scripts/ui-components/dest',
+                        dest: './app/scripts/ui-components/dest',
                         ext: '.js'
                     }
                 ]
@@ -35,14 +35,14 @@ module.exports = function(grunt) {
                 /* Compile components' less stylesheets */
                 {
                     expand: true, // Enable dynamic expansion.
-                    cwd: './scripts/ui-components/src', // Src matches are relative to this path.
+                    cwd: './app/scripts/ui-components/src', // Src matches are relative to this path.
                     src: ['**/*.less'], // Actual pattern(s) to match.
-                    dest: './scripts/ui-components/dest', // Destination path prefix.
+                    dest: './app/scripts/ui-components/dest', // Destination path prefix.
                     ext: '.css', // Dest filepaths will have this extension.
                 },
                 /* Compile main .less styleshhet */
                 {
-                    './styles/dest/main.css':'./styles/src/main.less'
+                    './app/styles/dest/main.css':'./app/styles/src/main.less'
                 }
                 ]
             }
@@ -50,8 +50,8 @@ module.exports = function(grunt) {
         /* Concatenate css files into one */
         concat_css: {
             all: {
-                src: ['./styles/dest/main.css', './scripts/ui-components/dest/**/*.css'],
-                dest: "./styles/dest/styles.css"
+                src: ['./app/styles/dest/main.css', './app/scripts/ui-components/dest/**/*.css'],
+                dest: "./app/styles/dest/styles.css"
             },
         },
         /* Running simple http server */
@@ -71,18 +71,18 @@ module.exports = function(grunt) {
             /* Watching for .less files change */
             less: {
                 files: [
-                    './scripts/ui-components/src/**/**.less',
-                    './styles/src/main.less'
+                    './app/scripts/ui-components/src/**/**.less',
+                    './app/styles/src/main.less'
                 ],
                 tasks: ['less:development','concat_css']
             },
             /* Watching fo scripts change */
             scripts: {
                 files: [
-                    './scripts/controllers/src/**.jsx',
-                    './scripts/ui-components/src/**/**.jsx',
-                    './scripts/app.js',
-                    './scripts/router.js'
+                    './app/scripts/controllers/src/**.jsx',
+                    './app/scripts/ui-components/src/**/**.jsx',
+                    './app/scripts/app.js',
+                    './app/scripts/router.js'
                 ],
                 tasks: ['react'],
                 options: {
