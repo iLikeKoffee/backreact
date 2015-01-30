@@ -1,13 +1,13 @@
 requirejs.config({
-  baseUrl: 'app/',
+  baseUrl: './',
   paths: {
-    app: '../app/scripts',
-    controllers: '../app/scripts/controllers/dest',
-    ui: '../app/scripts/ui-components/dest',
-    underscore: '../app/bower_components/underscore/underscore',
-    backbone: '../app/bower_components/backbone/backbone',
-    jquery: '../app/bower_components/jquery/dist/jquery.min',
-    react: '../app/bower_components/react/react'
+    app: './',
+    controllers: './scripts/controllers/dest',
+    ui: './scripts/ui-components/dest',
+    underscore: './bower_components/underscore/underscore',
+    backbone: './bower_components/backbone/backbone',
+    jquery: './bower_components/jquery/dist/jquery.min',
+    react: './bower_components/react/react'
   }
 });
 

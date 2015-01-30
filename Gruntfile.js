@@ -32,18 +32,18 @@ module.exports = function(grunt) {
         less: {
             development: {
                 files: [
-                /* Compile components' less stylesheets */
-                {
-                    expand: true, // Enable dynamic expansion.
-                    cwd: './app/scripts/ui-components/src', // Src matches are relative to this path.
-                    src: ['**/*.less'], // Actual pattern(s) to match.
-                    dest: './app/scripts/ui-components/dest', // Destination path prefix.
-                    ext: '.css', // Dest filepaths will have this extension.
-                },
-                /* Compile main .less styleshhet */
-                {
-                    './app/styles/dest/main.css':'./app/styles/src/main.less'
-                }
+                    /* Compile components' less stylesheets */
+                    {
+                        expand: true, // Enable dynamic expansion.
+                        cwd: './app/scripts/ui-components/src', // Src matches are relative to this path.
+                        src: ['**/*.less'], // Actual pattern(s) to match.
+                        dest: './app/scripts/ui-components/dest', // Destination path prefix.
+                        ext: '.css', // Dest filepaths will have this extension.
+                    },
+                    /* Compile main .less styleshhet */
+                    {
+                        './app/styles/dest/main.css': './app/styles/src/main.less'
+                    }
                 ]
             }
         },
@@ -59,7 +59,14 @@ module.exports = function(grunt) {
             server: {
                 options: {
                     open: false,
-                    livereload: true
+                    livereload: true,
+                    middleware: function(connect) {
+                        return [
+                            connect.static('app')
+                        ];
+                    },
+                    open: true,
+                    hostname: 'localhost'
                 }
             }
         },
@@ -74,7 +81,10 @@ module.exports = function(grunt) {
                     './app/scripts/ui-components/src/**/**.less',
                     './app/styles/src/main.less'
                 ],
-                tasks: ['less:development','concat_css']
+                tasks: ['build-components'],
+                options: {
+                    reload: true
+                }
             },
             /* Watching fo scripts change */
             scripts: {
@@ -84,12 +94,22 @@ module.exports = function(grunt) {
                     './app/scripts/app.js',
                     './app/scripts/router.js'
                 ],
-                tasks: ['react'],
+                tasks: ['build-components'],
                 options: {
                     spawn: true,
+                    reload: true
                 }
-            }
-        }
+            },
+            gruntfile: {
+                files: ['Gruntfile.js'],
+                options: {
+                    reload: true
+                }
+            },
+        },
+        clean: {
+            build: ['./app/scripts/controllers/dest/', './app/scripts/ui-components/dest/', './app/styles/dest/'],
+        },
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -98,8 +118,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-concat-css');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-react');
 
     grunt.registerTask('default', ['serve']);
-    grunt.registerTask('serve', ['connect:server', 'watch']);
+    grunt.registerTask('build-components', ['clean','less:development', 'concat_css', 'react']);
+    grunt.registerTask('serve', ['build-components','connect:server', 'watch']);
 };
