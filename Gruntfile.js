@@ -5,6 +5,7 @@ module.exports = function(grunt) {
 
         concat: {},
 
+        /* JSX compiling */
         react: {
             dynamic_mappings: {
                 files: [{
@@ -15,12 +16,23 @@ module.exports = function(grunt) {
                     ext: '.js'
                 }]
             }
+        },
+
+        /* Running simple http server */
+        connect: {
+            server: {
+                options: {
+                    open: false,
+                }
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-react');
 
     grunt.registerTask('default', []);
+    grunt.registerTask('serve', ['connect::keepalive']);
 };
