@@ -1,5 +1,5 @@
-define(function() {
+define(['react', 'ui/nav/nav'], function(React, Nav) {
     return function(name) {
-        console.log("Hello, "+ name + '!');
+    	React.render(<Nav name={name}/>, document.getElementById('main'))
     }
-})
+});

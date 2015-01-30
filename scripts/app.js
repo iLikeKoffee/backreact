@@ -3,6 +3,7 @@ requirejs.config({
 	paths: {
 		app: '../scripts',
 		controllers: '../scripts/controllers/dest',
+		ui: '../scripts/ui-components/dest',
 		underscore: '../scripts/bower_components/underscore/underscore',
     	backbone: '../scripts/bower_components/backbone/backbone',
     	jquery: '../scripts/bower_components/jquery/dist/jquery.min',

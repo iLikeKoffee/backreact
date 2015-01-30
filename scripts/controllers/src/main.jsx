@@ -1,5 +1,5 @@
-define([], function(React, Main) {
+define(['react', 'ui/nav/nav'], function(React, Nav) {
     return function() {
-        console.log('Hello, World!');
+    	React.render(<Nav name="world"/>, document.getElementById('main'))
     }
-})
+});

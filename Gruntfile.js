@@ -8,13 +8,24 @@ module.exports = function(grunt) {
         /* JSX compiling */
         react: {
             dynamic_mappings: {
-                files: [{
-                    expand: true,
-                    cwd: './scripts/controllers/src',
-                    src: ['**/*.jsx'],
-                    dest: './scripts/controllers/dest',
-                    ext: '.js'
-                }]
+                files: [
+                    /* Controllers compiling. */
+                    {
+                        expand: true,
+                        cwd: './scripts/controllers/src',
+                        src: ['**/*.jsx'],
+                        dest: './scripts/controllers/dest',
+                        ext: '.js'
+                    },
+                    /* ui-components compiling */
+                    {
+                        expand: true,
+                        cwd: './scripts/ui-components/src',
+                        src: ['**/**.jsx'],
+                        dest: './scripts/ui-components/dest',
+                        ext: '.js'
+                    }
+                ]
             }
         },
 
@@ -33,7 +44,12 @@ module.exports = function(grunt) {
                 livereload: true
             },
             scripts: {
-                files: ['./scripts/controllers/src/**.jsx'],
+                files: [
+                    './scripts/controllers/src/**.jsx',
+                    './scripts/ui-components/src/**/**.jsx',
+                    './scripts/app.js',
+                    './scripts/router.js'
+                ],
                 tasks: ['react'],
                 options: {
                     spawn: true,
@@ -49,5 +65,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-react');
 
     grunt.registerTask('default', ['serve']);
-    grunt.registerTask('serve', ['connect:server','watch']);
+    grunt.registerTask('serve', ['connect:server', 'watch']);
 };
