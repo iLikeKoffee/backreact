@@ -28,7 +28,25 @@ module.exports = function(grunt) {
                 ]
             }
         },
-
+        /* LESS compiling */
+        less: {
+            development: {
+                files: [{
+                    expand: true, // Enable dynamic expansion.
+                    cwd: './scripts/ui-components/src', // Src matches are relative to this path.
+                    src: ['**/*.less'], // Actual pattern(s) to match.
+                    dest: './scripts/ui-components/dest', // Destination path prefix.
+                    ext: '.css', // Dest filepaths will have this extension.
+                }]
+            }
+        },
+        /* Concatenate css files into one */
+        concat_css: {
+            all: {
+                src: ["./scripts/ui-components/dest/**/*.css"],
+                dest: "./css/dest/styles.css"
+            },
+        },
         /* Running simple http server */
         connect: {
             server: {
@@ -43,6 +61,14 @@ module.exports = function(grunt) {
             options: {
                 livereload: true
             },
+            /* Watching for .less files change */
+            less: {
+                files: [
+                    './scripts/ui-components/src/**/**.less',
+                ],
+                tasks: ['less:development','concat_css']
+            },
+            /* Watching fo scripts change */
             scripts: {
                 files: [
                     './scripts/controllers/src/**.jsx',
@@ -62,6 +88,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-concat-css');
     grunt.loadNpmTasks('grunt-react');
 
     grunt.registerTask('default', ['serve']);
