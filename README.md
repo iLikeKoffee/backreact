@@ -3,6 +3,9 @@
 #### Ссылки:
 
 - [Фото форм](https://www.dropbox.com/s/xb71et4xch4ewxr/realtors.zip?dl=0)
+- [Bootstrap Components](http://getbootstrap.com/components/)
+- [React.js](http://facebook.github.io/react/)
+- [Backbone.js](http://backbonejs.org/)
 
 
 #### Рабочая ветка - dev
@@ -17,15 +20,17 @@
     grunt serve
 ```
 
-Если необходимо создать route + controller + view + test, то выполняем команду:
+Пример компонента лежит в папке app/scripts/ui-components/src. Каждая папка - это компоенент. Создавать их нужно именно таким образом папка *component-name* и два файла в ней: *component-name.jsx* и *component-name.less*.
 
-```bash
-    yo angular:route route-name
-```
+Пример создания котроллера лежит в папке app/scripts/controllers/src. В данной папке каждый файл с расширением .jsx является отдельный котроллером.
 
-где **route-name** - имя вашего раута.
+Пример создания раута можно посмотреть в файле router.js.
 
-При этом в папке controllers будет создан файл route-name.js. Его нужно переместить в поддиректорию src и переименовать в route-name.jsx. Это необхоидмо для возможности использования React.js компонентов с .jsx синтаксисом внутри angular контроллера.
+Каждая зависиомость должна быть задекларирована при помощи API require.js в файле app.js.
+
+### Comming soon...
+
+Я (Sergey Golovin) чуть позде напишу yeoman генератор для проекта такого типа, чтобы удобнее создавать контроллеры и копоненты. А так же Alexey Sidash должен добавить фреймворк для тестированя компонентов.
 
 ### Работа с backend'ом
 
