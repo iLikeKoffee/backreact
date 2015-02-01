@@ -86,7 +86,7 @@ module.exports = function(grunt) {
                     reload: true
                 }
             },
-            /* Watching fo scripts change */
+            /* Watching for scripts change */
             scripts: {
                 files: [
                     './app/scripts/controllers/src/**.jsx',
@@ -100,6 +100,7 @@ module.exports = function(grunt) {
                     reload: true
                 }
             },
+            /* Watching  Gruntfile fo change */
             gruntfile: {
                 files: ['Gruntfile.js'],
                 options: {
@@ -107,9 +108,23 @@ module.exports = function(grunt) {
                 }
             },
         },
+        /* Clean configuration */
         clean: {
             build: ['./app/scripts/controllers/dest/', './app/scripts/ui-components/dest/', './app/styles/dest/'],
         },
+        /* Karma tests running */
+        karma: {
+            options: {
+                browsers: ['PhantomJS'],
+                configFile: './karma.conf.js',
+                singleRun: true
+            },
+            unit: {
+                options: {
+                    files: ['./test/**/*.test.js'],
+                }
+            }
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -120,7 +135,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-concat-css');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-react');
-
+    grunt.loadNpmTasks('grunt-karma');
     grunt.registerTask('default', ['serve']);
     grunt.registerTask('build', ['clean','less:development', 'concat_css', 'react']);
     grunt.registerTask('serve', ['build','connect:server', 'watch']);
