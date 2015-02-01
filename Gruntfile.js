@@ -81,7 +81,7 @@ module.exports = function(grunt) {
                     './app/scripts/ui-components/src/**/**.less',
                     './app/styles/src/main.less'
                 ],
-                tasks: ['build-components'],
+                tasks: ['build'],
                 options: {
                     reload: true
                 }
@@ -94,7 +94,7 @@ module.exports = function(grunt) {
                     './app/scripts/app.js',
                     './app/scripts/router.js'
                 ],
-                tasks: ['build-components'],
+                tasks: ['build'],
                 options: {
                     spawn: true,
                     reload: true
@@ -122,6 +122,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-react');
 
     grunt.registerTask('default', ['serve']);
-    grunt.registerTask('build-components', ['clean','less:development', 'concat_css', 'react']);
-    grunt.registerTask('serve', ['build-components','connect:server', 'watch']);
+    grunt.registerTask('build', ['clean','less:development', 'concat_css', 'react']);
+    grunt.registerTask('serve', ['build','connect:server', 'watch']);
 };
