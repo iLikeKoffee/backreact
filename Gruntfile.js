@@ -117,11 +117,31 @@ module.exports = function(grunt) {
             options: {
                 browsers: ['PhantomJS'],
                 configFile: './karma.conf.js',
-                singleRun: true
+                singleRun: true,
+                frameworks: ['jasmine', 'requirejs'],
+                basePath: '',
+                reporters: ['progress'],
+                port: 9876,
+                colors: true
             },
             unit: {
                 options: {
-                    files: ['./test/**/*.test.js'],
+                    files: [{
+                        pattern: 'test/test.config.js',
+                        included: true
+                    }, {
+                        pattern: 'app/scripts/**/**.js',
+                        included: false
+                    }, {
+                        pattern: 'app/test/**/**.test.js',
+                        included: false
+                    }, {
+                        pattern: 'test/**/**.test.js',
+                        included: false
+                    }, {
+                        pattern: 'app/bower_components/**/**.js',
+                        included: false
+                    }, ],
                 }
             }
         }
@@ -137,6 +157,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-react');
     grunt.loadNpmTasks('grunt-karma');
     grunt.registerTask('default', ['serve']);
-    grunt.registerTask('build', ['clean','less:development', 'concat_css', 'react']);
-    grunt.registerTask('serve', ['build','connect:server', 'watch']);
+    grunt.registerTask('build', ['clean', 'less:development', 'concat_css', 'react']);
+    grunt.registerTask('serve', ['build', 'connect:server', 'watch']);
 };
