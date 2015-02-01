@@ -1,3 +1,9 @@
-**/node_modules/**
-**/bower_components/**
-**/dest/**
+node_modules
+dist
+.tmp
+.sass-cache
+bower_components
+node_modules/
+app/bower_components/
+app/scripts/common/ui-components/dist/
+app/scripts/controllers/dest/
