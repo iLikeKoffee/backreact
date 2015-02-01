@@ -72,7 +72,7 @@ module.exports = function(grunt) {
             }
         },
 
-        /* Watchin for changes in project directory */
+        /* Watching for changes in project directory */
         watch: {
             options: {
                 livereload: true
@@ -153,7 +153,10 @@ module.exports = function(grunt) {
                     }, ],
                 }
             }
-        }
+        },
+        clean: {
+            build: ['./app/scripts/controllers/dest/', './app/scripts/ui-components/dest/', './app/styles/dest/'],
+        },
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
