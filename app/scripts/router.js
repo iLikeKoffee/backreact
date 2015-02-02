@@ -3,11 +3,12 @@ define(function(require) {
 
         var AppRouter = Backbone.Router.extend({
             routes: {
-                '': 'MainCtrl',
-                'hello/:name': 'HelloCtrl'
+                '':               'MainCtrl',
+                'hello/:name(/)': 'HelloCtrl',
+                '*actions':       'MainCtrl'
             },
 
-            MainCtrl: require('controllers/main'),
+            MainCtrl:  require('controllers/main'),
             HelloCtrl: require('controllers/hello')
         });
 

@@ -13,6 +13,6 @@ requirejs.config({
 
 requirejs(['app/router', 'backbone'], function(router, Backbone){
 
-  router.navigate('');
+  router.navigate('/');
   Backbone.history.start();
 });

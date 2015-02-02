@@ -7,3 +7,4 @@ node_modules/
 app/bower_components/
 app/scripts/ui-components/dest/
 app/scripts/controllers/dest/
+app/styles/dest/
