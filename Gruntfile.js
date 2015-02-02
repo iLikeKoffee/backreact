@@ -1,4 +1,5 @@
 module.exports = function(grunt) {
+  var serveStatic = require('serve-static');
   grunt.initConfig({
     /* Check code style */
     jshint: {
@@ -72,7 +73,7 @@ module.exports = function(grunt) {
           livereload: true,
           middleware: function(connect) {
             return [
-              connect.static('app')
+              serveStatic('app')
             ];
           },
           open: true,

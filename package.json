@@ -21,6 +21,7 @@
     "karma-requirejs": "~0.2.2",
     "react-tools": "~0.12.2",
     "install": "~0.1.8",
-    "npm": "~2.4.1"
+    "npm": "~2.4.1",
+    "serve-static": "~1.8.1"
   }
 }
