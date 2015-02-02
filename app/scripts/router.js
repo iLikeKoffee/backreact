@@ -5,11 +5,12 @@ define(function(require) {
             routes: {
                 '':               'MainCtrl',
                 'hello/:name(/)': 'HelloCtrl',
-                '*actions':       'MainCtrl'
+                '*actions':       'NotFoundCtrl'
             },
 
-            MainCtrl:  require('controllers/main'),
-            HelloCtrl: require('controllers/hello')
+            MainCtrl:     require('controllers/main'),
+            HelloCtrl:    require('controllers/hello'),
+            NotFoundCtrl: require('controllers/notfound')
         });
 
         return new AppRouter;
