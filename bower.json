@@ -2,18 +2,19 @@
   "name": "profcom",
   "version": "0.0.0",
   "authors": [
-    "Alexey Sidash <alexeysidash@gmail.com>"
+    "Alexey Sidash <alexeysidash@gmail.com>",
+    "Sergey Golovin <golovim@gmail.com>"
   ],
-  "description": "React+Backbone+RequireJS application skeleton.",
+  "description": "React+Backbone+RequireJS project snippet.",
   "main": "app/app.js",
   "moduleType": [
     "amd"
   ],
   "keywords": [
-    "cms"
+    "project-snippet backbone react require"
   ],
   "license": "MIT",
-  "private": true,
+  "private": false,
   "ignore": [
     "**/.*",
     "node_modules",
