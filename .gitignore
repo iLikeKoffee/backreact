@@ -5,5 +5,5 @@ dist
 bower_components
 node_modules/
 app/bower_components/
-app/scripts/common/ui-components/dist/
+app/scripts/ui-components/dest/
 app/scripts/controllers/dest/

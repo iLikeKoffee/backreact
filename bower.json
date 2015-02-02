@@ -4,8 +4,8 @@
   "authors": [
     "Alexey Sidash <alexeysidash@gmail.com>"
   ],
-  "description": "ProfcomSWSU site",
-  "main": "scripts/app.js",
+  "description": "React+Backbone+RequireJS application skeleton.",
+  "main": "app/app.js",
   "moduleType": [
     "amd"
   ],

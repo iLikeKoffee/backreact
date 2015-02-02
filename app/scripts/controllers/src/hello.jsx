@@ -1,12 +1,7 @@
-define(['react', 'ui/page/page', 'ui/lorem/lorem'], function(React, Page, Lorem ) {
-    return function(name) {
-      React.render(<Page name={name}>
-                      <div className='col-lg-12'>
-                        <Lorem/>
-                        <Lorem/>
-                        <Lorem/>
-                      </div>
-                   </Page>,
-                   document.getElementById('main'));
-    }
+define(['react', 'ui/panel/panel'], function(React, Panel){
+	return function(name){
+		React.render(<Panel title="Main controller">
+						<h1>Hello, {name}!</h1>
+					 </Panel>, document.body);
+	};
 });
