@@ -179,7 +179,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.registerTask('lint',['jshint', 'lesslint']);
   grunt.registerTask('default', ['serve']);
-  grunt.registerTask('build', ['clean', 'lint', 'less:development', 'concat_css', 'react']);
+  grunt.registerTask('build', ['clean', 'lint', 'less:development', 'concat_css', 'react' ,'test']);
   grunt.registerTask('serve', ['build', 'karma:all', 'connect:server', 'watch']);
   grunt.registerTask('test', ['build', 'karma:all']);
 };
