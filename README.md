@@ -2,6 +2,33 @@
 
 Building of project is managed with **grunt**, testing with **karma** and **Jasmine**.
 
+## How to start
+* `git clone https://github.com/iLikeKoffee/backreact YOUR_PROJECT_FOLDER`
+* `chmod +x install-deps.sh`
+* `chmod +x install-env.sh`
+* `sh ./install-env.sh` *Requires root access*, if you have bower, grunt and grunt-cli installed, skip it.
+* `sh ./install-deps.sh` *Should work without root access.*
+* `grunt` - Should run do some work on building examples, run tests in Chrome(Chrome window will blink once) and open working examples in your default browser. 
+
+## Implemented grunt commands
+* `grunt`, `grunt serve` - start connect server and rebuild project on every change.
+* `grunt lint` - check code style of .js, .jsx, .less files.
+* `grunt clean` - remove all build results.
+* `grunt build` - build project(clean, then lint, then compile less and jsx, then run all tests).
+* `grunt test` - run project tests in chrome browser. *PhantomJS doesn't work yet.*
+
+## Examples
+* app/scripts/router.js - Routing file.
+* app/scripts/ui-components/src/panel/panel.jsx - example of defining UI component.
+* app/scripts/controllers/src/*.jsx - example of defining controllers.
+* test/ui-test/panel.test.js - example of testing react components.
+
+## Plans
+* Write controllers test example.
+* Implement yoman scaffolding.
+* Implement writing ui-tests in .jsx syntax.
+* Implement `grunt dist` command to minify all code and build ready-to-deploy distribution.
+
 ## List of production dependencies
 * backbone ~1.1.2
 * bootstrap ~3.3.2
@@ -32,22 +59,3 @@ Building of project is managed with **grunt**, testing with **karma** and **Jasm
 * karma-requirejs
 * react-tools
 * npm
-
-## Implemented grunt commands
-* `grunt`, `grunt serve` - start connect server and rebuild project on every change.
-* `grunt lint` - check code style of .js, .jsx, .less files.
-* `grunt clean` - remove all build results.
-* `grunt build` - build project(clean, then lint, then compile less and jsx, then run all tests).
-* `grunt test` - run project tests.
-
-## Examples
-* app/scripts/router.js - Routing file.
-* app/scripts/ui-components/src/panel/panel.jsx - example of defining UI component.
-* app/scripts/controllers/src/*.jsx - example of defining controllers.
-* test/ui-test/panel.test.js - example of testing react components.
-
-## Plans
-* Write controllers test example.
-* Implement yoman scaffolding.
-* Implement writing ui-tests in .jsx syntax.
-* Implement `grunt dist` command to minify all code and build ready-to-deploy distribution.
