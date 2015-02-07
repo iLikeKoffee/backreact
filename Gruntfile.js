@@ -175,7 +175,7 @@ module.exports = function(grunt) {
 
     /* Cleaning build results */
     clean: {
-      build: ['./app/scripts/controllers/dest/', './app/scripts/ui-components/dest/', './app/styles/dest/'],
+      build: ['./app/scripts/controllers/dest/', './app/scripts/ui-components/dest/', './app/styles/dest/', './test/ui-components/dest/'],
     },
   });
 
