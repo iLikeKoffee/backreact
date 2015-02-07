@@ -23,12 +23,11 @@ Building of project is managed with **grunt**, testing with **karma** and **Jasm
 * app/scripts/router.js - Routing file.
 * app/scripts/ui-components/src/panel/panel.jsx - example of defining UI component.
 * app/scripts/controllers/src/*.jsx - example of defining controllers.
-* test/ui-test/panel.test.js - example of testing react components.
+* test/ui-components/src/panel.test.jsx - example of testing react components in .jsx syntax.
 
 ## Plans
 * Write controllers test example.
 * Implement yoman scaffolding.
-* Implement writing ui-tests in .jsx syntax.
 * Implement `grunt dist` command to minify all code and build ready-to-deploy distribution.
 
 ## List of production dependencies

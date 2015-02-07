@@ -1,12 +1,14 @@
 'use strict';
 define(['react', 'ui/panel/panel'], function(React, Panel) {
-  describe('Search field behaviour tests', function() {
+  describe('Panel behaviour tests', function() {
     var TestUtils = React.addons.TestUtils;
     var panel;
     var p;
     beforeEach(function(){
-      p = React.createElement('p',{},['Paragraph content']);
-      panel = TestUtils.renderIntoDocument(React.createElement(Panel, {title: "Test"}, [p]));
+      panel = TestUtils.renderIntoDocument((
+        <Panel title="Test">
+          <p>Paragraph content</p>
+        </Panel>));
     });
 
     it('Should render itself into DOM', function(){
