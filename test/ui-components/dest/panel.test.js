@@ -1,3 +1,4 @@
+'use strict';
 define(['react', 'ui/panel/panel'], function(React, Panel) {
   describe('Search field behaviour tests', function() {
     var TestUtils = React.addons.TestUtils;

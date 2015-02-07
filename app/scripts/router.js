@@ -1,4 +1,5 @@
 define(function(require) {
+        'use strict';
         var Backbone = require('backbone');
 
         var AppRouter = Backbone.Router.extend({
@@ -13,5 +14,5 @@ define(function(require) {
             NotFoundCtrl: require('controllers/notfound')
         });
 
-        return new AppRouter;
+        return new AppRouter ();
     });

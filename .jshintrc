@@ -3,11 +3,12 @@
   "browser": true,
   "esnext": true,
   "bitwise": true,
-  "camelcase": true,
+  "camelcase": false,
   "curly": true,
   "eqeqeq": true,
   "immed": true,
-  "indent": 2,
+  "indent": 4,
+  "white": true,
   "latedef": true,
   "newcap": true,
   "noarg": true,
@@ -19,10 +20,12 @@
   "trailing": true,
   "smarttabs": true,
   "globals": {
-    "alertify": false,
-    "angular": false,
-    "React": false,
-    "EntitiesConstructor": false
+    "require": false,
+    "requirejs": false,
+    "define": false,
+    "describe": false,
+    "it": false,
+    "expect": false,
+    "beforeEach": false
   }
 }
-

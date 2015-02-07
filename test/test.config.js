@@ -1,3 +1,4 @@
+'use strict';
 var allTestFiles = [];
 var TEST_REGEXP = /\.test\.js$/i;
 

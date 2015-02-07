@@ -1,19 +1,15 @@
 module.exports = function(grunt) {
-  var serveStatic = require('serve-static');
+  'use strict';
   grunt.initConfig({
     /* Check code style */
     jshint: {
-      js: ['Gruntfile.js', 'app/script/**/*.js', 'test/**/*.js'],
-      jsx: ['app/scripts/**/*.jsx'],
+      js: ['Gruntfile.js', 'app/scripts/**/*.js', 'test/**/*.js'],
+      jsx: ['app/scripts/**/*.jsx', 'test/ui-components/src/**/**.jsx'],
       options: {
+        jshintrc: true,
         reporter: require('jshint-stylish')
       }
     },
-    /* Check less code style */
-    lesslint: {
-      src: ['./app/scripts/ui-components/src/**/*.less', './app/styles/src/main.less']
-    },
-
     /* JSX compiling */
     react: {
       dynamic_mappings: {
@@ -33,6 +29,14 @@ module.exports = function(grunt) {
             src: ['**/**.jsx'],
             dest: './app/scripts/ui-components/dest',
             ext: '.js'
+          },
+          /* JSX test compiling */
+          {
+            expand: true,
+            cwd: './test/ui-components/src',
+            src: ['**/**.jsx'],
+            dest: './test/ui-components/dest',
+            ext: '.test.js'
           }
         ]
       }
@@ -44,11 +48,11 @@ module.exports = function(grunt) {
         files: [
           /* Compile components' less stylesheets */
           {
-            expand: true,
-            cwd: './app/scripts/ui-components/src', 
-            src: ['**/*.less'], 
-            dest: './app/scripts/ui-components/dest',
-            ext: '.css'
+            expand: true, // Enable dynamic expansion.
+            cwd: './app/scripts/ui-components/src', // Src matches are relative to this path.
+            src: ['**/*.less'], // Actual pattern(s) to match.
+            dest: './app/scripts/ui-components/dest', // Destination path prefix.
+            ext: '.css', // Dest filepaths will have this extension.
           },
           /* Compile main .less styleshhet */
           {
@@ -70,10 +74,9 @@ module.exports = function(grunt) {
     connect: {
       server: {
         options: {
-          livereload: true,
           middleware: function(connect) {
             return [
-              serveStatic('app')
+              connect.static('app')
             ];
           },
           open: true,
@@ -84,8 +87,17 @@ module.exports = function(grunt) {
 
     /* Watching for changes in project directory */
     watch: {
-      options: {
-        livereload: true
+      /* 
+       * Watching targets of preprocessors(dest) for livereload
+       */
+      targets: {
+        files: ['app/scripts/**/dest/**.js',
+                'app/app.js',
+                'app/scripts/router.js',
+                'app/styles/dest/styles/css'],
+        options: {
+          livereload:true
+        }
       },
       /* Watching for .less files changes */
       less: {
@@ -93,7 +105,7 @@ module.exports = function(grunt) {
           './app/scripts/ui-components/src/**/**.less',
           './app/styles/src/main.less'
         ],
-        tasks: ['build'],
+        tasks: ['less:development', 'concat_css'],
         options: {
           reload: true
         }
@@ -121,8 +133,8 @@ module.exports = function(grunt) {
       },
       /* Watching for tests changes */
       tests: {
-        files: ['./test/**/*.js'],
-        tasks: ['build'],
+        files: ['./test/ui-components/src/**/**.jsx'],
+        tasks: ['build', 'test'],
         options: {
           reload: true
         }
@@ -178,9 +190,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-react');
   grunt.loadNpmTasks('grunt-karma');
-  grunt.registerTask('lint',['jshint', 'lesslint']);
+  grunt.registerTask('lint',['jshint']);
   grunt.registerTask('default', ['serve']);
-  grunt.registerTask('build', ['clean', 'lint', 'less:development', 'concat_css', 'react' ,'karma:all']);
-  grunt.registerTask('serve', ['build', 'connect:server', 'watch']);
-  grunt.registerTask('test', ['build']);
+  grunt.registerTask('build', ['clean', 'lint', 'less:development', 'concat_css', 'react']);
+  grunt.registerTask('serve', ['build', 'karma:all', 'connect:server', 'watch']);
+  grunt.registerTask('test', ['build', 'karma:all']);
 };

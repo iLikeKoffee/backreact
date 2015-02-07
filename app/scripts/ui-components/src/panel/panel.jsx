@@ -1,4 +1,5 @@
 define(['react'], function(React){
+	'use strict';
 	var Panel = React.createClass({
 	render: function(){
 		return <div className="panel panel-default">
