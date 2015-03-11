@@ -7,7 +7,6 @@ define(['react'], function(React) {
                         <a className="navbar-brand" id="main-link" href="#/">Hello, {this.props.name}</a>
                       </div>
                       <ul className="nav navbar-nav">
-                        <li><a href="#/admin" id="admin-link">Admin</a></li>
                         <li><a href="#/devpage" id="devpage-link">Devpage</a></li>
                       </ul>
                       <div className="pull-right profile-controls">
