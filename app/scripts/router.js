@@ -6,10 +6,12 @@ define(function(require) {
             routes: {
                 '':               'MainCtrl',
                 'hello/:name(/)': 'HelloCtrl',
+                'devpage':        'DevpageCtrl',
                 '*actions':       'NotFoundCtrl'
             },
 
             MainCtrl:     require('controllers/main'),
+            DevpageCtrl:  require('controllers/devpage'),
             HelloCtrl:    require('controllers/hello'),
             NotFoundCtrl: require('controllers/notfound')
         });

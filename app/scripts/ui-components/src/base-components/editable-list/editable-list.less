@@ -1,0 +1,37 @@
+.editable-list {
+  position: relative;
+  .panel-heading {
+    background-color: white;
+    border: none;
+    .row {
+      border-bottom: 1px solid #ccc;
+    }
+    .h1 {
+      border: none;
+      margin: 0;
+      padding: 0;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 40px;
+    }
+  }
+  .panel-body {
+    padding: 0 5px;
+    .controls {
+      a {
+        margin: 0 5px;
+        text-decoration: none;
+        color: #eee;
+      }
+      .glyphicon-pencil:hover {
+        color: lighten(green, 25%)
+      }
+      .glyphicon-remove:hover {
+        color: lighten(red, 10%)
+      }
+    }
+    .list-group-item {
+      border-radius: 0;
+    }
+  }
+}
